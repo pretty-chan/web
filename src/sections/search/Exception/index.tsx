@@ -1,6 +1,5 @@
 import LinkButton from '@/components/LinkButton';
 import Typography from '@/components/Typography';
-import { usePathname } from 'next/navigation';
 import * as s from './style.css';
 
 interface SearchExceptionSectionProps {
@@ -14,12 +13,12 @@ export default function SearchExceptionSection(
 
   const isError = type === 'error';
 
-  const currentPath = usePathname();
+  const currentPath = '/'
 
   return (
     <div className={s.base}>
       <Typography size={36} weight={700}>
-        {isError ? 'Oh no :(' : 'No Result :('}
+        {isError ? '🙀🙀' : '🫙🙁'}
       </Typography>
       <Typography weight={500}>
         {isError

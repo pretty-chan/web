@@ -22,6 +22,10 @@ export default function Home() {
     router.push(`/search/${emojiToCode(searchValue)}`);
   };
 
+  const onClickLucky = () => {
+    router.push(`/search/${emojiToCode('🐒')}`);
+  }
+
   return (
     <div className={s.container}>
       <div className={s.base}>
@@ -36,7 +40,7 @@ export default function Home() {
         />
         <div className={s.buttons}>
           <Button onClick={onSubmit}>🔍</Button>
-          <Button>😃🤞</Button>
+          <Button onClick={onClickLucky}>😃🤞</Button>
         </div>
       </div>
     </div>
