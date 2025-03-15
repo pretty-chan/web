@@ -19,8 +19,6 @@ export default function Home() {
       return;
     }
 
-    // u+1f600
-
     router.push(`/search/${emojiToCode(searchValue)}`);
   };
 
@@ -33,14 +31,7 @@ export default function Home() {
         <Input
           placeholder={'💭🧠'}
           value={searchValue}
-          onChange={(event) => {
-            const value = event.target.value;
-
-            // is emoji
-            if (true) {
-              setSearchValue(value);
-            }
-          }}
+          onChange={setSearchValue}
           onSubmit={onSubmit}
         />
         <div className={s.buttons}>
