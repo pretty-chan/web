@@ -19,10 +19,18 @@ export default function Input(props: InputProps) {
 
   useEffect(() => {
     const onKeydown = (e: KeyboardEvent) => {
-      if (!isFocused) return ;
+      if (!isFocused) return;
 
       if (e.key === 'Backspace') {
         onChange?.(value?.slice(0, -2) || '');
+      }
+
+      if (e.key === 'Escape') {
+        setIsFocused(false);
+      }
+
+      if (e.key === 'Enter' && onSubmit) {
+        onSubmit();
       }
     }
 
@@ -39,11 +47,6 @@ export default function Input(props: InputProps) {
         layout
         className={cn(s.base, { [s.focusing]: isFocused })}
         style={{ borderRadius: 999 }}
-        onKeyDown={(event) => {
-          if (event.key === 'Enter' && onSubmit) {
-            onSubmit();
-          }
-        }}
         onClick={() => setIsFocused((prev) => !prev)}>
         {value || (
           <motion.span layout className={s.placeholder}>

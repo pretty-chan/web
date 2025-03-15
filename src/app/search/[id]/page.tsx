@@ -4,12 +4,13 @@ import Button from '@/components/Button';
 import Input from '@/components/Input';
 import LinkButton from '@/components/LinkButton';
 import Typography from '@/components/Typography';
-import { codeToEmoji } from '@/lib/utils/emoji';
+import { codeToEmoji, emojiToCode } from '@/lib/utils/emoji';
 import SearchExceptionSection from '@/sections/search/Exception';
 import { use, useEffect, useState } from 'react';
 import * as s from './page.css';
 import SearchSkeleton from './skeleton';
 import ContentItem, { Content } from '@/components/ContentItem';
+import { useRouter } from 'next/navigation';
 
 export default function Search({
   params,
@@ -23,11 +24,22 @@ export default function Search({
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState<Content[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [searchValue, setSearchValue] = useState<string>(codeToEmoji(id));
+
+  const router = useRouter();
+
+  const onSubmit = () => {
+    if (!searchValue) {
+      return;
+    }
+
+    router.push(`/search/${emojiToCode(searchValue)}`);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/search/${id}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/search/${codeToEmoji(id)}`);
         res.body?.pipeThrough(new TextDecoderStream()).pipeTo(new WritableStream({
           write(chunk) {
             setData(prev => [...prev, JSON.parse(chunk)]);
@@ -63,7 +75,12 @@ export default function Search({
           </div>
           <Button>🔍🔄</Button>
         </header>
-        <Input placeholder={'💭🧠'} value={codeToEmoji(id)} />
+        <Input
+          placeholder={'💭🧠'}
+          value={searchValue}
+          onChange={setSearchValue}
+          onSubmit={onSubmit}
+        />
         {isError ? <SearchExceptionSection type={'error'} /> : null}
         {!isLoading && data.length <= 0 ? <SearchExceptionSection type={'no-results'} /> : null}
         <div className={s.list}>

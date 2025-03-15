@@ -1,5 +1,11 @@
 import { style } from '@vanilla-extract/css';
 
+export const link = style({
+  width: '100%',
+  display: 'block',
+  textDecoration: 'none',
+})
+
 export const base = style({
   display: 'flex',
   padding: 16,
