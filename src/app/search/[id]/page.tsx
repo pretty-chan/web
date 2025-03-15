@@ -73,7 +73,7 @@ export default function Search({
               📚🧐
             </Typography>
           </div>
-          <Button onClick={() => location.reload()}>🔍🔄</Button>
+          <Button onClick={() => router.push(`/search/${emojiToCode(searchValue)}`)}>🔍🔄</Button>
         </header>
         <Input
           placeholder={'💭🧠'}
