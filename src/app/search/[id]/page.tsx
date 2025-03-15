@@ -1,9 +1,11 @@
 import Button from '@/components/Button';
+import Input from '@/components/Input';
 import LinkButton from '@/components/LinkButton';
 import Typography from '@/components/Typography';
 import { codeToEmoji } from '@/lib/utils/emoji';
 import { use } from 'react';
 import * as s from './page.css';
+import SearchSkeleton from './skeleton';
 
 export default function Search({
   params,
@@ -29,6 +31,10 @@ export default function Search({
           </div>
           <Button>🔍🔄</Button>
         </header>
+        <Input placeholder={'😃'} />
+        {Array.from({ length: 3 }).map((_, index) => (
+          <SearchSkeleton key={index} />
+        ))}
       </div>
     </div>
   );
