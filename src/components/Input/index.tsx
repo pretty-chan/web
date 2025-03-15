@@ -33,7 +33,7 @@ export default function Input(props: InputProps) {
         value ||
         <motion.span layout className={s.placeholder}>{placeholder}</motion.span>
       }</motion.div>
-      <EmojiKeyboard show={isFocused} />
+      <EmojiKeyboard show={isFocused} onEmojiSelect={(emoji) => onChange?.(value + emoji)} />
     </>
   );
 }

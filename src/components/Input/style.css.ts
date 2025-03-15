@@ -10,6 +10,8 @@ export const base = style({
   fontSize: '16px',
   fontWeight: 500,
   transition: 'background 0.2s',
+  whiteSpace: 'nowrap',
+  overflow: 'hidden',
   ':hover': {
     background: '#e5e5e5',
     cursor: 'text',
