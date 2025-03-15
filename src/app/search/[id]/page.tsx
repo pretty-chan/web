@@ -33,8 +33,8 @@ export default function Search({
         </header>
         <Input placeholder={'😃'} />
         <div className={s.skeletonList}>
-          {Array.from({ length: 3 }).map((_, index) => (
-            <SearchSkeleton key={index} />
+          {Array.from({ length: 4 }).map((_, index) => (
+            <SearchSkeleton key={index} order={index} />
           ))}
         </div>
       </div>
