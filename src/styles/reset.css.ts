@@ -13,6 +13,7 @@ resetGlobalStyle('*', {
   margin: 0,
   padding: 0,
   fontFamily: fontFamily,
+  lineHeight: 1,
   fontSynthesis: 'none',
 });
 

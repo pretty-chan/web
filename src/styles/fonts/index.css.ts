@@ -3,6 +3,9 @@ import { weight } from './values/weight';
 
 export const fontFamily = 'WantedSans';
 
+const capitalizeFirstLetter = (string: string) =>
+  string.charAt(0).toUpperCase() + string.slice(1);
+
 globalFontFace(
   fontFamily,
   Object.entries(weight).map(([name, weight]) => ({
@@ -13,6 +16,3 @@ globalFontFace(
     fontDisplay: 'block',
   })),
 );
-
-const capitalizeFirstLetter = (string: string) =>
-  string.charAt(0).toUpperCase() + string.slice(1);
