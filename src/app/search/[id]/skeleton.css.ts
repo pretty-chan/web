@@ -5,6 +5,7 @@ export const base = style({
   width: '100%',
   padding: 16,
   ...flexCenter({
+    justify: 'flex-start',
     gap: 12,
   }),
 });

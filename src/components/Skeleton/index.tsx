@@ -1,3 +1,6 @@
+'use client';
+
+import { CSSProperties } from 'react';
 import * as s from './style.css';
 
 interface SkeletonProps {
@@ -5,16 +8,9 @@ interface SkeletonProps {
   height?: number | string;
 }
 
-export default function Skeleton(props: SkeletonProps) {
-  const { width = '100%', height = 14 } = props;
-
-  return (
-    <div
-      className={s.base}
-      style={{
-        width,
-        height,
-      }}
-    />
-  );
+export default function Skeleton({
+  width = '100%',
+  height = 14,
+}: SkeletonProps) {
+  return <div className={s.base} style={{ width, height } as CSSProperties} />;
 }

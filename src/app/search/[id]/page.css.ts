@@ -32,3 +32,7 @@ export const title = style({
     gap: 6,
   }),
 });
+
+export const skeletonList = style({
+  width: '100%',
+});

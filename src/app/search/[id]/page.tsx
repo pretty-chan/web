@@ -32,9 +32,11 @@ export default function Search({
           <Button>🔍🔄</Button>
         </header>
         <Input placeholder={'😃'} />
-        {Array.from({ length: 3 }).map((_, index) => (
-          <SearchSkeleton key={index} />
-        ))}
+        <div className={s.skeletonList}>
+          {Array.from({ length: 3 }).map((_, index) => (
+            <SearchSkeleton key={index} />
+          ))}
+        </div>
       </div>
     </div>
   );
