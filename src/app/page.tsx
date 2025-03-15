@@ -30,7 +30,7 @@ export default function Home() {
     <div className={s.container}>
       <div className={s.base}>
         <Typography weight={600} size={36}>
-          🔍
+          😀🔍
         </Typography>
         <Input
           placeholder={'💭🧠'}
