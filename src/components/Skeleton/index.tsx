@@ -3,11 +3,10 @@ import * as s from './style.css';
 interface SkeletonProps {
   width?: number | string;
   height?: number | string;
-  aspectRatio?: number;
 }
 
 export default function Skeleton(props: SkeletonProps) {
-  const { width = '100%', height = 14, aspectRatio } = props;
+  const { width = '100%', height = 14 } = props;
 
   return (
     <div
@@ -15,7 +14,6 @@ export default function Skeleton(props: SkeletonProps) {
       style={{
         width,
         height,
-        aspectRatio,
       }}
     />
   );
