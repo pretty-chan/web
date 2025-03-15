@@ -73,7 +73,7 @@ export default function Search({
               📚🧐
             </Typography>
           </div>
-          <Button>🔍🔄</Button>
+          <Button onClick={() => location.reload()}>🔍🔄</Button>
         </header>
         <Input
           placeholder={'💭🧠'}
