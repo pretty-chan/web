@@ -7,11 +7,9 @@ const skeletonGradient = keyframes({
 });
 
 export const base = style({
-  width: '100%',
-  height: '30px',
   backgroundColor: '#f2f2f2',
   position: 'relative',
   overflow: 'hidden',
-  borderRadius: '4px',
+  borderRadius: 12,
   animation: `${skeletonGradient} 1.5s infinite ease-in-out`,
 });
