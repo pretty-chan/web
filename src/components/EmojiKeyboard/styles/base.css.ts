@@ -13,6 +13,7 @@ export const base = style({
   flexWrap: 'wrap',
   gap: 8,
   overflowX: 'auto',
+  zIndex: 100,
 })
 
 export const focusing = style({
