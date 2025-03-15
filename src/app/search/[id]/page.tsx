@@ -1,9 +1,12 @@
+'use client';
+
 import Button from '@/components/Button';
 import Input from '@/components/Input';
 import LinkButton from '@/components/LinkButton';
 import Typography from '@/components/Typography';
 import { codeToEmoji } from '@/lib/utils/emoji';
-import { use } from 'react';
+import SearchExceptionSection from '@/sections/search/Exception';
+import { use, useState } from 'react';
 import * as s from './page.css';
 import SearchSkeleton from './skeleton';
 
@@ -15,6 +18,9 @@ export default function Search({
   }>;
 }) {
   const { id } = use(params);
+
+  const [isError, setIsError] = useState(true);
+  const [data, setData] = useState<string[]>([]);
 
   return (
     <div className={s.container}>
@@ -32,7 +38,9 @@ export default function Search({
           <Button>🔍🔄</Button>
         </header>
         <Input placeholder={'💭🧠'} value={codeToEmoji(id)} />
-        <div className={s.skeletonList}>
+        {isError && <SearchExceptionSection type={'error'} />}
+        {data || <SearchExceptionSection type={'no-results'} />}
+        <div className={s.list}>
           {Array.from({ length: 4 }).map((_, index) => (
             <SearchSkeleton key={index} order={index} />
           ))}

@@ -33,6 +33,6 @@ export const title = style({
   }),
 });
 
-export const skeletonList = style({
+export const list = style({
   width: '100%',
 });
