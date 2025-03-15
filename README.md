@@ -2,6 +2,9 @@
 ![image](https://github.com/user-attachments/assets/ec9974b9-1c4e-4821-94b7-c42836cbd2c8)  
 Emoji-Only Search Engine: A text-free search experience powered entirely by emojis.
 
+## Fantastic Emoji Keyboard!
+
+<img width="1864" alt="image" src="https://github.com/user-attachments/assets/1e39bd53-0124-43c8-876b-5802b7b5ae8f" />
 
 # 🚀 Try it out!
 https://scrapyard-busan.algorix.cloud/
