@@ -1,6 +1,5 @@
 import { resetGlobalStyle } from '@/lib/utils/styles/layer';
 import '@/styles/layer.css';
-import { fontFamily } from './fonts/index.css';
 
 resetGlobalStyle('html, body', {
   wordBreak: 'keep-all',
@@ -12,9 +11,7 @@ resetGlobalStyle('*', {
   boxSizing: 'border-box',
   margin: 0,
   padding: 0,
-  fontFamily: fontFamily,
-  lineHeight: 1,
-  fontSynthesis: 'none',
+  letterSpacing: 4,
 });
 
 resetGlobalStyle('*:focus', {

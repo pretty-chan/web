@@ -1,6 +1,4 @@
 import { globalStyle } from '@vanilla-extract/css';
-import './fonts/index.css';
-import { fontFamily } from './fonts/index.css';
 import './reset.css';
 
 globalStyle('html, body', {
@@ -10,9 +8,4 @@ globalStyle('html, body', {
 
 globalStyle('*', {
   boxSizing: 'border-box',
-  fontFamily: fontFamily,
-  color: '#000',
-  lineHeight: 'normal',
-  fontWeight: 400,
-  letterSpacing: 'normal',
 });
