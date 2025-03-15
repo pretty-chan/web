@@ -1,10 +1,10 @@
 'use client';
 
-import { useState } from 'react';
-import * as s from './style.css';
+import cn from 'classnames';
 import { motion } from 'framer-motion';
-import cn from 'classnames'
+import { useState } from 'react';
 import EmojiKeyboard from '../EmojiKeyboard';
+import * as s from './style.css';
 
 interface InputProps {
   placeholder?: string;
@@ -22,18 +22,23 @@ export default function Input(props: InputProps) {
       <motion.div
         layout
         className={cn(s.base, { [s.focusing]: isFocused })}
-        style={{borderRadius:999}}
+        style={{ borderRadius: 999 }}
         onKeyDown={(event) => {
           if (event.key === 'Enter' && onSubmit) {
             onSubmit();
           }
         }}
-        onClick={() => setIsFocused(prev => !prev)}
-      >{
-        value ||
-        <motion.span layout className={s.placeholder}>{placeholder}</motion.span>
-      }</motion.div>
-      <EmojiKeyboard show={isFocused} onEmojiSelect={(emoji) => onChange?.(value + emoji)} />
+        onClick={() => setIsFocused((prev) => !prev)}>
+        {value || (
+          <motion.span layout className={s.placeholder}>
+            {placeholder}
+          </motion.span>
+        )}
+      </motion.div>
+      <EmojiKeyboard
+        show={isFocused}
+        onEmojiSelect={(emoji) => onChange?.(value + emoji)}
+      />
     </>
   );
 }
