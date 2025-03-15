@@ -31,7 +31,7 @@ export default function Search({
           </div>
           <Button>🔍🔄</Button>
         </header>
-        <Input placeholder={'😃'} />
+        <Input placeholder={'💭🧠'} value={codeToEmoji(id)} />
         <div className={s.skeletonList}>
           {Array.from({ length: 4 }).map((_, index) => (
             <SearchSkeleton key={index} order={index} />
