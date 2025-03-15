@@ -6,9 +6,10 @@ import LinkButton from '@/components/LinkButton';
 import Typography from '@/components/Typography';
 import { codeToEmoji } from '@/lib/utils/emoji';
 import SearchExceptionSection from '@/sections/search/Exception';
-import { use, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import * as s from './page.css';
 import SearchSkeleton from './skeleton';
+import ContentItem, { Content } from '@/components/ContentItem';
 
 export default function Search({
   params,
@@ -19,8 +20,33 @@ export default function Search({
 }) {
   const { id } = use(params);
 
-  const [isError, setIsError] = useState(true);
-  const [data, setData] = useState<string[]>([]);
+  const [isError, setIsError] = useState(false);
+  const [data, setData] = useState<Content[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/search/${id}`);
+        res.body?.pipeThrough(new TextDecoderStream()).pipeTo(new WritableStream({
+          write(chunk) {
+            setData(prev => [...prev, JSON.parse(chunk)]);
+            console.log('🔍📦', JSON.parse(chunk));
+          },
+          close() {
+            console.log('🔍📦', 'Stream closed');
+            setIsLoading(false);
+          },
+        }));
+      } catch (e) {
+        console.error(e);
+        setIsError(true);
+        alert('🚨🔍');
+      }
+    }
+
+    fetchData();
+  }, [id])
 
   return (
     <div className={s.container}>
@@ -38,10 +64,11 @@ export default function Search({
           <Button>🔍🔄</Button>
         </header>
         <Input placeholder={'💭🧠'} value={codeToEmoji(id)} />
-        {isError && <SearchExceptionSection type={'error'} />}
-        {data || <SearchExceptionSection type={'no-results'} />}
+        {isError ? <SearchExceptionSection type={'error'} /> : null}
+        {!isLoading && data.length <= 0 ? <SearchExceptionSection type={'no-results'} /> : null}
         <div className={s.list}>
-          {Array.from({ length: 4 }).map((_, index) => (
+          {data.map((c, i) => <ContentItem key={i} content={c} />)}
+          {Array.from({ length: isLoading ? data.length > 0 ? 1 : 6 : 0 }).map((_, index) => (
             <SearchSkeleton key={index} order={index} />
           ))}
         </div>
